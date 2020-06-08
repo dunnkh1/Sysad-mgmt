@@ -1,0 +1,15 @@
+$hostname=$(hostname)
+class{ 'ufw': }
+if ${hostname} == 'mgmt-c.foo.org.nz'{
+
+ ufw::allow { 'ssh':
+	port => 22,
+ }
+ ufw::allow { 'puppet':
+       	port => 8140,
+ }
+
+ ufw::allow { 'NTP service':
+       	port => 123,
+ }
+} 
